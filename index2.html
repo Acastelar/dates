@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dates</title>
+    <link rel="icon" sizes="32x32" href="favicon-32x32.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            border-radius: 50px;
+            background: #0d0d0d;
+            box-shadow:  20px 20px 60px #0b0b0b,
+             -20px -20px 60px #0f0f0f;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        button {
+            
+            background-color: #3f0000;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        button:hover {
+            background-color: #641212;
+        }
+        p {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #fff;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #D00000;
+            transform: rotate(45deg);
+            animation: slideUp 2s ease-in-out forwards, sideSway 1s ease-in-out infinite alternate;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #D00000;
+            border-radius: 50%;
+        }
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+        @keyframes slideUp {
+            0% {
+                opacity: 1;
+                bottom: 0;
+                transform: rotate(45deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                bottom: 200px;
+                transform: rotate(45deg) scale(0);
+            }
+        }
+        @keyframes sideSway {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Dates</h1>
+    <button onclick="generateDateEmCasaOption(event)">Casa</button>
+    <button onclick="generateLugaresOption(event)">Lugares</button>
+    <button onclick="generateRandomOption(event)">Gerar Opção Aleatória?</button>
+    <p id="date-em-casa-option"></p>
+    <p id="lugares-option"></p>
+    <p id="random-option"></p>
+
+    <div class="cssload-main">
+        <div class="cssload-heart">
+            <span class="cssload-heartL"></span>
+            <span class="cssload-heartR"></span>
+            <span class="cssload-square"></span>
+        </div>
+        <div class="cssload-shadow"></div>
+    </div>
+
+    <script>
+        const dateEmCasaOptions = [
+            'Massinha em casa',
+            'Pintar em casa ou algum lugar?',
+            'Quebra cabeça em casa',
+            'Cineminha em casa comendo esfiha',
+            'Jogar juntas o dia todo até sair no soco'
+        ];
+
+        const lugaresOptions = [
+            'Sair pra comer em algum restaurante',
+            'Montar nossos legos no shopping',
+            'Planetário no Ibirapuera',
+            'Boliche',
+            'Café de gatinhos',
+            'Mirante do MAC',
+            'Rodízio de vinhos',
+            'Botanikafe',
+            'Bráz Quintal',
+            'Terraço Jardins',
+            'Jacarandá',
+            'Bosco',
+            'Virô Bistrô',
+            'Gato Grio Café 2D',
+            'Coffee Story'
+        ];
+
+        function generateDateEmCasaOption(event) {
+            const randomIndex = Math.floor(Math.random() * dateEmCasaOptions.length);
+            const randomOption = dateEmCasaOptions[randomIndex];
+            document.getElementById('date-em-casa-option').textContent = `Opção em Casa: ${randomOption}`;
+            createHearts(event.target);
+        }
+
+        function generateLugaresOption(event) {
+            const randomIndex = Math.floor(Math.random() * lugaresOptions.length);
+            const randomOption = lugaresOptions[randomIndex];
+            document.getElementById('lugares-option').textContent = `Opção em Lugares: ${randomOption}`;
+            createHearts(event.target);
+        }
+
+        function generateRandomOption(event) {
+            const allOptions = dateEmCasaOptions.concat(lugaresOptions);
+            const randomIndex = Math.floor(Math.random() * allOptions.length);
+            const randomOption = allOptions[randomIndex];
+            document.getElementById('random-option').textContent = `Opção Aleatória: ${randomOption}`;
+            createHearts(event.target);
+        }
+
+        function createHearts(button) {
+            for (let i = 0; i < 5; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 2}s`;
+                button.appendChild(heart);
+                setTimeout(() => heart.remove(), 2000);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dates divos</title>
+    <link rel="icon" sizes="32x32" href="favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Nunito', sans-serif;
+        }
+        .start-screen {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
+        }
+        .start-screen button {
+            background-color: #3f0000;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .start-screen button:hover {
+            background-color:#641212;
+        }
+    </style>
+</head>
+<body>
+    <div class="start-screen">
+        <H2>Deseja criar memórias para o resto da vida comigo?</H2>
+        <button onclick="startApp()">Sim</button>
+        <br>
+        <button onclick="optionNo()">Não, gay</button>
+    </div>
+
+
+    <script>
+        function startApp() {
+            window.location.href = 'index2.html';
+        }
+        function optionNo(){
+            window.alert("Não pode me abandonar nunca tem que escolher sim ");
+        }
+    </script>
+</body>
+</html>
